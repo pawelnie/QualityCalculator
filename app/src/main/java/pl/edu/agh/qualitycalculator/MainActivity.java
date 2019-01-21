@@ -14,11 +14,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     EditText etNum1;
     EditText etNum2;
+    EditText etNum3;
 
     Button btnAdd;
     Button btnSub;
     Button btnMult;
     Button btnDiv;
+    Button btnAvg;
 
     TextView tvResult;
 
@@ -32,11 +34,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         etNum1 = (EditText) findViewById(R.id.etNum1);
         etNum2 = (EditText) findViewById(R.id.etNum2);
+        etNum3 = (EditText) findViewById(R.id.etNum3);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnSub = (Button) findViewById(R.id.btnSub);
         btnMult = (Button) findViewById(R.id.btnMult);
         btnDiv = (Button) findViewById(R.id.btnDiv);
+        btnAvg = (Button) findViewById(R.id.btnAvg);
 
         tvResult = (TextView) findViewById(R.id.tvResult);
 
@@ -44,13 +48,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnSub.setOnClickListener(this);
         btnMult.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
+        btnAvg.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         if (TextUtils.isEmpty(etNum1.getText().toString())
                 || TextUtils.isEmpty(etNum2.getText().toString())) {
-            tvResult.setText("Enter some data to calculate");
+            tvResult.setText("Populate first two fields to perform +, -, * or /. \n Populate all three to calculate average.");
             return;
         }
 
@@ -68,20 +74,40 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btnDiv:
                 selectedOperation = Operation.DIVIDE;
                 break;
+            case R.id.btnAvg:
+                selectedOperation = Operation.AVERAGE;
+                break;
             default:
                 break;
         }
 
         float num1 = Float.parseFloat(etNum1.getText().toString());
         float num2 = Float.parseFloat(etNum2.getText().toString());
+
+        // Gdy User kliknie przycisk odpowiadajacy za liczenie sredniej sprawdzamy czy trzecie pole
+        // jest uzupelnione. Jesli nie jest to prosimy o uzupelnienie wszystkich pol.
+        // Pozwala to na wykonywanie podstawowych dzialan bez uzpelniania trzeciego pola z ktorego one nie korzystaja.
+
+        float num3 = 0;
+        if (selectedOperation == Operation.AVERAGE) {
+            if (TextUtils.isEmpty(etNum3.getText().toString()))
+            {
+                tvResult.setText("Populate all three fields to calculate average");
+                return;
+            }
+            else {
+            num3 = Float.parseFloat(etNum3.getText().toString());
+            }}
+
+
         try {
-            float result = calculations.calculate(selectedOperation, num1, num2);
+            float result = calculations.calculate(selectedOperation, num1, num2, num3);
             String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2, result);
             tvResult.setText(verbalizedOperation);
         }
         catch (Exception ex) {
             tvResult.setText("An error ocurred: " + ex.toString());
-        };
+        }
 
     }
 }
