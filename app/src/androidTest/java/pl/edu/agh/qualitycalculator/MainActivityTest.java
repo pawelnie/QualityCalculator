@@ -59,7 +59,7 @@ public class MainActivityTest {
         onView(withId(R.id.etNum2)).perform(click()).perform(typeText("3"));
         onView(withId(R.id.etNum3)).perform(click()).perform(typeText("5"));
         onView(withId(R.id.btnAvg)).perform(click());
-        onView(withId(R.id.tvResult)).check(matches(withText("1.0 average 3.0 gives value 3.0")));
+        onView(withId(R.id.tvResult)).check(matches(withText("Average of 1.0, 3.0, 5.0 gives value 3.0")));
     }
 
     @Test
@@ -76,5 +76,6 @@ public class MainActivityTest {
         onView(withId(R.id.btnAvg)).perform(click());
         onView(withId(R.id.tvResult)).check(matches(withText("Populate all three fields to calculate average")));
     }
+
 }
 
