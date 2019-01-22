@@ -52,5 +52,29 @@ public class MainActivityTest {
         onView(withId(R.id.btnDiv)).perform(click());
         onView(withId(R.id.tvResult)).check(matches(withText("4.0 divided by 4.0 gives value 1.0")));
     }
+
+    @Test
+    public void testAverage(){
+        onView(withId(R.id.etNum1)).perform(click()).perform(typeText("1"));
+        onView(withId(R.id.etNum2)).perform(click()).perform(typeText("3"));
+        onView(withId(R.id.etNum3)).perform(click()).perform(typeText("5"));
+        onView(withId(R.id.btnAvg)).perform(click());
+        onView(withId(R.id.tvResult)).check(matches(withText("1.0 average 3.0 gives value 3.0")));
+    }
+
+    @Test
+    public void longMessage(){
+        onView(withId(R.id.etNum1)).perform(click()).perform(typeText("1"));
+        onView(withId(R.id.btnAdd)).perform(click());
+        onView(withId(R.id.tvResult)).check(matches(withText("Populate first two fields to perform +, -, * or /. \n Populate all three to calculate average.")));
+    }
+
+    @Test
+    public void shortMessage(){
+        onView(withId(R.id.etNum1)).perform(click()).perform(typeText("1"));
+        onView(withId(R.id.etNum2)).perform(click()).perform(typeText("3"));
+        onView(withId(R.id.btnAvg)).perform(click());
+        onView(withId(R.id.tvResult)).check(matches(withText("Populate all three fields to calculate average")));
+    }
 }
 

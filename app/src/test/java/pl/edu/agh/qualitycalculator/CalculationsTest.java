@@ -20,7 +20,7 @@ public class CalculationsTest {
     }
 
     @Test
-    public void testSubstract() throws Exception {
+    public void testSubtract() throws Exception {
         assertEquals(1, calculationsUnderTest.calculate(Operation.SUBTRACT, 3, 2, 0), 0.01);
     }
 
@@ -32,6 +32,11 @@ public class CalculationsTest {
     @Test
     public void testMultiply() throws Exception {
         assertEquals(6, calculationsUnderTest.calculate(Operation.MULTIPLY, 3, 2, 0), 0.01);
+    }
+
+    @Test
+    public void testAverage() throws Exception {
+        assertEquals(6, calculationsUnderTest.calculate(Operation.AVERAGE, 2, 4, 12), 0.01);
     }
 
     @After

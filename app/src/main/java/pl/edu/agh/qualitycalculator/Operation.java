@@ -27,6 +27,6 @@ public enum Operation {
     },
     AVERAGE {
         @Override
-        public  String toString() { return "Average"; }
+        public  String toString() { return "average"; }
     }
 }
