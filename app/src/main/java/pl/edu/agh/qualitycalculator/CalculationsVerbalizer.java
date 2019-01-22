@@ -11,8 +11,8 @@ public class CalculationsVerbalizer {
         return verbalizedOperation;
     }
 
-    public String verbalize(float operand1, float operand2, float operand3, float result) {
-        String verbalizedOperation = "Average of ";
+    public String verbalize(Operation operation, float operand1, float operand2, float operand3, float result) {
+        String verbalizedOperation = operation.toString() + " of ";
         verbalizedOperation += String.valueOf(operand1);
         verbalizedOperation += ", ";
         verbalizedOperation += String.valueOf(operand2);

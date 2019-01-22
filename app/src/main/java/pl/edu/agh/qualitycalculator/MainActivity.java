@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         try {
             float result = calculations.calculate(selectedOperation, num1, num2, num3);
             if (selectedOperation == Operation.AVERAGE) {
-                String verbalizedOperation = verbalizer.verbalize(num1, num2, num3, result);
+                String verbalizedOperation = verbalizer.verbalize(selectedOperation, num1, num2, num3, result);
                 tvResult.setText(verbalizedOperation);
             }
             else {
