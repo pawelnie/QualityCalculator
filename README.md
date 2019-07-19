@@ -2,3 +2,4 @@
 [![codecov](https://codecov.io/gh/pawelnie/QualityCalculator/branch/master/graph/badge.svg)](https://codecov.io/gh/pawelnie/QualityCalculator)
 
 # QualityCalculator
+Calculator created for AGh Course
